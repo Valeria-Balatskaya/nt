@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Technologies Assignment 1 - Theoretical Part</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            min-height: 100vh; 
+            overflow-y: auto; 
+        }
+        img {
+            max-width: 800px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1000px; 
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: auto; 
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 15px; 
+        }
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+
+        .main {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main">Networking Technologies Assignment 4</h1>
+        <p class="main"><strong>By:</strong> Valeriia Balatska (253850), Vladyslav Dubenchuk (253847)</p>
+    
+        <h2 class="main">Theoretical Part - Network and Transport Layers</h2>
+
+        <h1>TCP and UDP Protocols</h1>
+    
+    <h2>TCP Protocol (Transmission Control Protocol)</h2>
+    <p>The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.
+
+    </p>
+    <h3>Key Features of TCP:</h3>
+    <ul>
+        <li><strong>Reliability:</strong> Uses acknowledgments and retransmissions for error detection and correction.</li>
+        <li><strong>Order:</strong> Ensures packets are delivered in sequence using sequence numbers.</li>
+        <li><strong>Flow Control:</strong> Adjusts the rate of data flow to prevent overwhelming the receiver.</li>
+        <li><strong>Congestion Control:</strong> Adapts the sending rate based on network congestion.</li>
+        <li><strong>Connection-Oriented:</strong> Requires a connection to be established (via a handshake) before data transfer.</li>
+    </ul>
+
+    <h2>UDP Protocol (User Datagram Protocol)</h2>
+    <p>UDP is a connectionless protocol that focuses on fast data transmission without ensuring reliability, order, or error correction. It is best suited for applications that require low latency and can tolerate some data loss.</p>
+    <h3>Key Features of UDP:</h3>
+    <ul>
+        <li><strong>Unreliable:</strong> No acknowledgment or retransmission of lost packets.</li>
+        <li><strong>Connectionless:</strong> Does not establish a connection before sending data.</li>
+        <li><strong>Low Latency:</strong> Faster than TCP as it eliminates overhead like acknowledgments and handshakes.</li>
+        <li><strong>Broadcast and Multicast:</strong> Supports sending data to multiple devices simultaneously.</li>
+    </ul>
+
+    <h2>TCP Protocol Parameters</h2>
+    <p>TCP parameters include sequence number, acknowledgment number, data offset, reserved, control bits (flags), window size, checksum, urgent pointer, options, and padding. These parameters help in establishing a reliable connection and ensuring data integrity during transmission. </p>
+    <ul>
+        <li><strong>Sequence Number:</strong> Used to keep track of data packets and ensure correct ordering.</li>
+        <li><strong>Acknowledgment Number:</strong> Indicates the next expected byte from the sender.</li>
+        <li><strong>Window Size:</strong> Specifies the amount of data the sender can transmit before needing an acknowledgment.</li>
+        <li><strong>Flags:</strong> Includes control flags like <code>SYN</code>, <code>ACK</code>, <code>FIN</code>, and others to manage connection states.</li>
+        <li><strong>Checksum:</strong> Ensures data integrity by verifying errors in the transmitted segment.</li>
+        <li><strong>Urgent Pointer:</strong> Signals urgent data that needs immediate attention.</li>
+    </ul>
+
+    <h2>UDP Protocol Parameters</h2>
+    <p>UDP has fewer protocol parameters than TCP, including source port, destination port, length, and checksum. These parameters help in identifying the source and destination of the data and ensuring data integrity to some extent.</p>
+    <ul>
+        <li><strong>Source Port:</strong> Identifies the sending application.</li>
+        <li><strong>Destination Port:</strong> Identifies the receiving application.</li>
+        <li><strong>Length:</strong> Specifies the length of the UDP header and data.</li>
+        <li><strong>Checksum:</strong> Used to verify the integrity of the packet.</li>
+    </ul>
+
+    <h2>TCP Connection</h2>
+    <p>TCP establishes a connection between two devices through a process known as the <strong>three-way handshake</strong>. This process ensures both devices are ready to communicate and agree on initial sequence numbers.</p>
+    <h3>Steps of Three-Way Handshake:</h3>
+    <ol>
+        <li><strong>SYN:</strong> The client sends a <code>SYN</code> (synchronize) message to the server to initiate the connection.</li>
+        <li><strong>SYN-ACK:</strong> The server responds with a <code>SYN-ACK</code> message, acknowledging the client's request and sending its own synchronization.</li>
+        <li><strong>ACK:</strong> The client sends an <code>ACK</code> message, confirming the server's response.</li>
+    </ol>
+
+    <h2>Connection Establishment</h2>
+    <p>TCP connections are established through the three-way handshake process. Both parties agree on parameters like initial sequence numbers and window size to facilitate communication.</p>
+
+    <h2>Connection Release</h2>
+    <p>To terminate a TCP connection, a <strong>four-step process</strong> is typically followed:</p>
+    <ol>
+        <li><strong>FIN:</strong> One party sends a <code>FIN</code> message to signal the intent to close the connection.</li>
+        <li><strong>ACK:</strong> The other party acknowledges the <code>FIN</code> message.</li>
+        <li><strong>FIN:</strong> The second party sends its own <code>FIN</code> message to signal it is ready to close the connection.</li>
+        <li><strong>ACK:</strong> The first party acknowledges the second <code>FIN</code> message, completing the termination.</li>
+    </ol>
+
+    <h2>Ports</h2>
+    <p>Ports are numerical identifiers used to differentiate between multiple applications or services running on a single device. They are categorized as:</p>
+    <ul>
+        <li><strong>Well-Known Ports:</strong> (0–1023) Reserved for common services like HTTP (port 80) and FTP (port 21).</li>
+        <li><strong>Registered Ports:</strong> (1024–49151) Assigned to specific applications or services.</li>
+        <li><strong>Dynamic/Ephemeral Ports:</strong> (49152–65535) Used for temporary communication during sessions.</li>
+    </ul>
+
+    <h2>Practical Part</h2>
+    <h2>2.1 Identify ports used by a web browser</h2>
+    <img src="4.1.png" alt="browser">
+    <img src="4.1.1.png" alt="browser">
+    <img src="4.1.2.png" alt="browser">
+    <img src="4.1.3.png" alt="browser">
+    <h2>2.2 Copying a File Using FTP</h2>
+    <img src="4.2.1.png" alt="ftp">
+    <img src="4.2.2.png" alt="ftp">
+    <img src="4.2.3.png" alt="ftp">
+    <h2>2.3 Copying a File Using SCP and SFTP</h2>
+    <img src="4.3.1.png" alt="scp">
+    <img src="4.3.2.png" alt="scp">
+    <h2>2.4 Checking DNS Protocol and Port</h2>
+    <p>
+        wireshark
+    </p>
+    <img src="4.4.1.png" alt="DNS">
+    <p>
+        dns trigger
+    </p>
+    <img src="4.4.2.png" alt="dns">
+    <p>
+        verification
+    </p>
+    <img src="4.4.3.png" alt="dns">
+        </div>
+    </body>
+    </html>
